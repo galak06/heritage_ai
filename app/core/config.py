@@ -27,6 +27,7 @@ class Settings(BaseSettings):
 
     # Conversation settings
     max_history_length: int = 6  # 3 exchanges (user + assistant each)
+    max_response_tokens: int = 300  # Limit response length
 
     # Data paths
     data_dir: str = "data/hadassa"

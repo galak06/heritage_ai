@@ -1,4 +1,5 @@
 import logging
+import time
 from typing import Dict, List, Optional
 
 import ollama
@@ -57,11 +58,20 @@ class SavtaLLM:
 
         # Generate response
         try:
+            logger.info(f"Generating response for: {user_message[:50]}...")
+            logger.debug(f"Context length: {len(context)} chars, History: {len(conversation_history or [])} messages")
+
+            start_time = time.time()
             response = self.client.chat(
                 model=settings.ollama_model,
                 messages=messages,
+                options={"num_predict": settings.max_response_tokens},
             )
-            return response["message"]["content"]
+            elapsed = time.time() - start_time
+
+            content = response["message"]["content"]
+            logger.info(f"Response generated in {elapsed:.2f}s ({len(content)} chars)")
+            return content
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             raise

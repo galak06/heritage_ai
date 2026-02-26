@@ -89,12 +89,11 @@ class MemoryRetriever:
             else:
                 logger.debug(f"Below threshold: {meta.get('title')} (similarity: {similarity:.3f})")
 
-        has_relevant = len(relevant_docs) > 0
         context = "\n\n---\n\n".join(relevant_docs) if relevant_docs else ""
 
         return {
             "context": context,
-            "has_relevant_memories": has_relevant,
+            "has_relevant_memories": bool(relevant_docs),
             "sources": sources,
         }
 

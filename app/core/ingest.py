@@ -1,5 +1,6 @@
 import logging
 from pathlib import Path
+from typing import Dict, List
 
 import chromadb
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -10,7 +11,7 @@ from app.core.config import settings
 logger = logging.getLogger(__name__)
 
 
-def load_documents_from_directory(data_path: Path) -> list[dict]:
+def load_documents_from_directory(data_path: Path) -> List[Dict]:
     """Load all markdown files from data directory with metadata."""
     documents = []
 
@@ -35,7 +36,7 @@ def load_documents_from_directory(data_path: Path) -> list[dict]:
     return documents
 
 
-def chunk_documents(documents: list[dict]) -> list[dict]:
+def chunk_documents(documents: List[Dict]) -> List[Dict]:
     """Split documents into chunks while preserving metadata."""
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=settings.chunk_size,
@@ -58,7 +59,7 @@ def chunk_documents(documents: list[dict]) -> list[dict]:
     return chunks
 
 
-def ingest_memories() -> dict:
+def ingest_memories() -> Dict:
     """Main ingestion pipeline: load, chunk, embed, and store memories."""
     data_path = settings.data_path
 

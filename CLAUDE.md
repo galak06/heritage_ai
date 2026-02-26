@@ -5,10 +5,10 @@ Heritage AI is a proof-of-concept application that demonstrates how AI can prese
 
 ## Tech Stack
 - **Framework**: FastAPI + uvicorn
-- **LLM**: Ollama (local inference, privacy-preserving)
+- **LLM**: Ollama with qwen2.5 (multilingual support)
 - **Embeddings**: Ollama with nomic-embed-text
 - **Vector DB**: ChromaDB (persistent storage)
-- **Python**: 3.12 with absolute imports
+- **Python**: 3.9+ with typing module for type hints
 
 ## Project Structure
 ```
@@ -49,7 +49,7 @@ The Savta persona uses Yiddish endearments, shares wisdom through stories, and e
 ```bash
 # Prerequisites
 ollama serve
-ollama pull llama3.2
+ollama pull qwen2.5
 ollama pull nomic-embed-text
 
 # Start

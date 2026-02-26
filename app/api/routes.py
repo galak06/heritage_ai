@@ -48,6 +48,7 @@ async def ingest() -> IngestResponse:
     """
     try:
         result = ingest_memories()
+        retriever.reset_collection()  # Refresh collection reference
         return IngestResponse(**result)
     except Exception as e:
         logger.error(f"Error in ingest endpoint: {e}")

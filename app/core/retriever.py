@@ -106,6 +106,10 @@ class MemoryRetriever:
         except Exception:
             return False
 
+    def reset_collection(self):
+        """Reset the collection reference - call after ingest."""
+        self._collection = None
+
 
 # Singleton instance
 retriever = MemoryRetriever()

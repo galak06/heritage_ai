@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     max_history_length: int = 6  # 3 exchanges (user + assistant each)
 
     # Data paths
-    data_dir: str = "data"
+    data_dir: str = "data/hadassa"
 
     @property
     def data_path(self) -> Path:

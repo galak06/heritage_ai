@@ -19,7 +19,10 @@ class SavtaLLM:
     @property
     def client(self):
         if self._client is None:
-            self._client = ollama.Client(host=settings.ollama_base_url)
+            self._client = ollama.Client(
+                host=settings.ollama_base_url,
+                timeout=settings.ollama_timeout,
+            )
         return self._client
 
     def generate_response(

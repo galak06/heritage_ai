@@ -27,7 +27,7 @@ class Settings(BaseSettings):
 
     # Conversation settings
     max_history_length: int = 6  # 3 exchanges (user + assistant each)
-    max_response_tokens: int = 300  # Limit response length
+    max_response_tokens: int = 100  # Limit response length - short like real conversation
     ollama_timeout: int = 60  # Timeout in seconds
 
     # Data paths
